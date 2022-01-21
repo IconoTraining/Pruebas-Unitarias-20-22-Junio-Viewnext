@@ -12,23 +12,25 @@ public class SmartHomeController
     {		
 		LocalDateTime time = LocalDateTime.now();
 		
-        // Update the time of last motion.
+        // Nos anotamos la hora para llevar cuenta de la última vez que se detectó movimiento
         if (motionDetected) {
             this.lastMotionTime = time;
         }
         
-        // If motion was detected in the evening or at night, turn the light on.
         TimeUtils timeUtils = new TimeUtils();
         String timeOfDay = timeUtils.getTimeOfDay();
         
         BackyardSwitcher backyardSwitcher = new BackyardSwitcher();
+        // Si se ha detectado movimiento durante Evening o Night, encendemos la luz
         if (motionDetected && (timeOfDay == "Evening" || timeOfDay == "Night")) {
         	backyardSwitcher.turnOn();
         }
-        // If no motion is detected for one minute, or if it is morning or day, turn the light off.
+        // Si no se ha detectado movimiento desde hace 1 minuto o más, or o si es morning o si es afternoon, apagamos la luz.
         else if (time.isAfter(this.lastMotionTime.plusSeconds(60)) || (timeOfDay == "Morning" || timeOfDay == "Afternoon")){
         	backyardSwitcher.turnOff();
         }
+
+        // En los casos que no sean los anteriores, ni encendemos ni apagamos la luz. La dejamos como esté.
     }
 	
 }
