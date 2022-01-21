@@ -7,20 +7,23 @@ import java.time.LocalDateTime;
 public class SmartHomeController
 {
 	private LocalDateTime lastMotionTime;
+    private SwitcherInterface backyardSwitcher;
 
-	public void actuateLights(boolean motionDetected)
-    {		
-		LocalDateTime time = LocalDateTime.now();
-		
+    public SmartHomeController(SwitcherInterface backyardSwitcher) {
+
+        this.backyardSwitcher = backyardSwitcher;
+    }
+
+    public void actuateLights(boolean motionDetected, LocalDateTime time)
+    {
         // Nos anotamos la hora para llevar cuenta de la última vez que se detectó movimiento
         if (motionDetected) {
             this.lastMotionTime = time;
         }
         
         TimeUtils timeUtils = new TimeUtils();
-        String timeOfDay = timeUtils.getTimeOfDay();
-        
-        BackyardSwitcher backyardSwitcher = new BackyardSwitcher();
+        String timeOfDay = timeUtils.getTimeOfDay(time);
+
         // Si se ha detectado movimiento durante Evening o Night, encendemos la luz
         if (motionDetected && (timeOfDay == "Evening" || timeOfDay == "Night")) {
         	backyardSwitcher.turnOn();

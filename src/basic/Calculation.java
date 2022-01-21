@@ -7,8 +7,8 @@ public class Calculation {
 	// input: {2, 6, 9}, output: 9
 	// input: {-4, 2, -5}, output: 2
     public static int findMax(int[] arr){  
-        int max = 0;
-        for(int i=0;i<arr.length;++i){  
+        int max = arr[0];
+        for(int i=1;i<arr.length;++i){
             if(max<arr[i])  
                 max=arr[i];  
         }  

@@ -24,7 +24,7 @@ public class DNI {
 			case 13: salida = 'J'; break;
 			case 14: salida = 'Z'; break;
 			case 15: salida = 'S'; break;
-			case 16: salida = 'O'; break;
+			case 16: salida = 'Q'; break;
 			case 17: salida = 'V'; break;
 			case 18: salida = 'H'; break;
 			case 19: salida = 'L'; break;
