@@ -1,31 +1,33 @@
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import java.time.LocalDateTime;
 
+import advanced.BackyardSwitcher;
+import advanced.SmartHomeController;
+import advanced.TimeUtils;
 import org.junit.jupiter.api.Test;
 
 class SmartHomeControllerTest {
 	
-	@Test
-	void siDetectaMovimientoYEsEveningEnciendeLaBombilla() {
-		
-		LocalDateTime fakeTime = LocalDateTime.now().withHour(20);
-		
-		TimeUtils fakeTimeUtils = mock(TimeUtils.class);
-		when(fakeTimeUtils.getTimeOfDay(isA(LocalDateTime.class))).thenReturn("Evening");
-		
-		BackyardSwitcher fakeSwitcher = mock(BackyardSwitcher.class);
-		
-		SmartHomeController controller = new SmartHomeController();
-		controller.setTime(fakeTime);
-		controller.setTimeUtils(fakeTimeUtils);
-		controller.setBackyardSwitcher(fakeSwitcher);
-		
-		controller.actuateLights(true);
-		
-		verify(fakeSwitcher).turnOn();
-	}
+//	@Test
+//	void siDetectaMovimientoYEsEveningEnciendeLaBombilla() {
+//
+//		LocalDateTime fakeTime = LocalDateTime.now().withHour(20);
+//
+//		TimeUtils fakeTimeUtils = mock(TimeUtils.class);
+//		when(fakeTimeUtils.getTimeOfDay(isA(LocalDateTime.class))).thenReturn("Evening");
+//
+//		BackyardSwitcher fakeSwitcher = mock(BackyardSwitcher.class);
+//
+//		SmartHomeController controller = new SmartHomeController();
+//		controller.setTime(fakeTime);
+//		controller.setTimeUtils(fakeTimeUtils);
+//		controller.setBackyardSwitcher(fakeSwitcher);
+//
+//		controller.actuateLights(true);
+//
+//		verify(fakeSwitcher).turnOn();
+//	}
 	
 	
 	
@@ -35,7 +37,7 @@ class SmartHomeControllerTest {
 //	@Test
 //	void SiDetectaMovimientoYEsEveningEnciendeLaBombilla() {
 //		
-//		class BackyardSwitcher implements SwitcherInterface {
+//		class advanced.BackyardSwitcher implements advanced.SwitcherInterface {
 //			
 //			public boolean turnOnCalled = false;
 //			
@@ -49,10 +51,10 @@ class SmartHomeControllerTest {
 //		}
 //		
 //		LocalDateTime fakeTime = LocalDateTime.now().withHour(20);
-//		TimeUtils timeUtils = new TimeUtils();
-//		BackyardSwitcher fakeSwitcher = new BackyardSwitcher();
+//		advanced.TimeUtils timeUtils = new advanced.TimeUtils();
+//		advanced.BackyardSwitcher fakeSwitcher = new advanced.BackyardSwitcher();
 //		
-//		SmartHomeController controller = new SmartHomeController();
+//		advanced.SmartHomeController controller = new advanced.SmartHomeController();
 //		controller.setTime(fakeTime);
 //		controller.setTimeUtils(timeUtils);
 //		controller.setBackyardSwitcher(fakeSwitcher);
@@ -92,14 +94,14 @@ class SmartHomeControllerTest {
 //	@Test
 //	void SiDetectaMovimientoYEsEveningEnciendeLaBombilla() {
 //		// Set up
-//		TimeUtils timeUtils = mock(TimeUtils.class);
+//		advanced.TimeUtils timeUtils = mock(advanced.TimeUtils.class);
 //		when(timeUtils.getTimeOfDay(isA(LocalDateTime.class))).thenReturn("Night");
 //		
-//		SwitcherInterface switcher = mock(BackyardSwitcher.class);
+//		advanced.SwitcherInterface switcher = mock(advanced.BackyardSwitcher.class);
 //		
 //		LocalDateTime time = LocalDateTime.now();
 //		
-//		SmartHomeController controller = new SmartHomeController();
+//		advanced.SmartHomeController controller = new advanced.SmartHomeController();
 //		controller.setTimeUtils(timeUtils);
 //		controller.setBackyardSwitcher(switcher);
 //		controller.setTime(time);
@@ -119,14 +121,14 @@ class SmartHomeControllerTest {
 //		// - Siendo Evening 
 //		// - para que se encienda la bombilla
 //		
-//		TimeUtils timeUtils = mock(TimeUtils.class);
+//		advanced.TimeUtils timeUtils = mock(advanced.TimeUtils.class);
 //		when(timeUtils.getTimeOfDay(isA(LocalDateTime.class))).thenReturn("Evening");
 //		
-//		SwitcherInterface switcher = mock(BackyardSwitcher.class);
+//		advanced.SwitcherInterface switcher = mock(advanced.BackyardSwitcher.class);
 //		
 //		LocalDateTime time1 = LocalDateTime.now().withHour(19).withMinute(10).withSecond(0);
 //		
-//		SmartHomeController controller = new SmartHomeController();
+//		advanced.SmartHomeController controller = new advanced.SmartHomeController();
 //		controller.setTimeUtils(timeUtils);
 //		controller.setBackyardSwitcher(switcher);
 //		controller.setTime(time1);
@@ -142,7 +144,7 @@ class SmartHomeControllerTest {
 //				
 //		LocalDateTime time2 = LocalDateTime.now().withHour(19).withMinute(10).withSecond(59);
 //		
-//		SwitcherInterface mockSwitcher2 = mock(BackyardSwitcher.class);
+//		advanced.SwitcherInterface mockSwitcher2 = mock(advanced.BackyardSwitcher.class);
 //		
 //		controller.setTime(time2);
 //		controller.setBackyardSwitcher(mockSwitcher2);
@@ -164,14 +166,14 @@ class SmartHomeControllerTest {
 //		// - Con detección de movimiento
 //		// - Siendo Evening 
 //		// - para que se encienda la bombilla
-//		TimeUtils timeUtils = mock(TimeUtils.class);
+//		advanced.TimeUtils timeUtils = mock(advanced.TimeUtils.class);
 //		when(timeUtils.getTimeOfDay(isA(LocalDateTime.class))).thenReturn("Evening");
 //		
-//		SwitcherInterface mockSwitcher1 = mock(BackyardSwitcher.class);
+//		advanced.SwitcherInterface mockSwitcher1 = mock(advanced.BackyardSwitcher.class);
 //		
 //		LocalDateTime time1 = LocalDateTime.now();
 //		
-//		SmartHomeController controller = new SmartHomeController();
+//		advanced.SmartHomeController controller = new advanced.SmartHomeController();
 //		controller.setTimeUtils(timeUtils);
 //		controller.setBackyardSwitcher(mockSwitcher1);
 //		controller.setTime(time1);
@@ -184,7 +186,7 @@ class SmartHomeControllerTest {
 //		// - Habiendo pasado el tiempo necesario
 //		// - Para VERIFICAR que se apaga la bombilla
 //		
-//		SwitcherInterface mockSwitcher2 = mock(BackyardSwitcher.class);
+//		advanced.SwitcherInterface mockSwitcher2 = mock(advanced.BackyardSwitcher.class);
 //		
 //		LocalDateTime time2 = LocalDateTime.now().withHour(19).withMinute(11).withSecond(01); 
 //		

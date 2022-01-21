@@ -1,3 +1,4 @@
+package advanced;
 
 public interface SwitcherInterface {
 

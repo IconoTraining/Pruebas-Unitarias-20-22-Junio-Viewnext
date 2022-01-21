@@ -1,3 +1,4 @@
+package advanced;
 
 public class BackyardSwitcher implements SwitcherInterface {
 	public void turnOn() {

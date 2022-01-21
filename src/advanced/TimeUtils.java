@@ -1,12 +1,14 @@
+package advanced;
+
 import java.time.LocalDateTime;
 
 
 
 public class TimeUtils {
 	
-	public String getTimeOfDay(LocalDateTime time)
+	public String getTimeOfDay()
 	{
-		// LocalDateTime time = LocalDateTime.now();
+		LocalDateTime time = LocalDateTime.now();
 	    if (time.getHour() >= 0 && time.getHour() < 6)
 	    {
 	        return "Night";
