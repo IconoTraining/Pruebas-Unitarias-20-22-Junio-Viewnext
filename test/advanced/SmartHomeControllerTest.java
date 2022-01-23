@@ -1,7 +1,7 @@
 package advanced;
 
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito.mock;
+import org.mockito.Mockito;
 
 import java.time.LocalDateTime;
 
@@ -56,7 +56,7 @@ class SmartHomeControllerTest {
 	@Test
 	void SiDetectaMovimientoYEsEveningEnciendeLaBombilla() {
 		// Set up
-		SwitcherInterface switcher = mock(BackyardSwitcher.class);
+		SwitcherInterface switcher = Mockito.mock(BackyardSwitcher.class);
 		LocalDateTime fakeTime = LocalDateTime.now().withHour(20);
 
 		SmartHomeController controller = new SmartHomeController(switcher);;
@@ -65,7 +65,7 @@ class SmartHomeControllerTest {
 		controller.actuateLights(true, fakeTime);
 
 		// Assert
-		verify(switcher).turnOn();
+		Mockito.verify(switcher).turnOn();
 	}
 
 	@Test
@@ -75,12 +75,13 @@ class SmartHomeControllerTest {
 		// - Con detección de movimiento
 		// - Siendo Evening
 		// - para que se encienda la bombilla
-		TimeUtils timeUtils = mock(TimeUtils.class);
-		SwitcherInterface mockSwitcher = mock(BackyardSwitcher.class);
+		TimeUtils timeUtils = Mockito.mock(TimeUtils.class);
+		SwitcherInterface mockSwitcher = Mockito.mock(BackyardSwitcher.class);
 		LocalDateTime time1 = LocalDateTime.now().withHour(19).withMinute(10).withSecond(00);
 
 		SmartHomeController controller = new SmartHomeController(mockSwitcher);
 		controller.actuateLights(true, time1);
+		Mockito.reset(mockSwitcher);
 
 		// SetUp - parte 2:
 		// Setup para llamar a actuateLights:
@@ -96,8 +97,8 @@ class SmartHomeControllerTest {
 		controller.actuateLights(false, time2);
 
 		// Assert
-		verify(mockSwitcher, never()).turnOn();
-		verify(mockSwitcher, never()).turnOff();
+		Mockito.verify(mockSwitcher, Mockito.never()).turnOn();
+		Mockito.verify(mockSwitcher, Mockito.never()).turnOff();
 	}
 
 	@Test
@@ -107,8 +108,8 @@ class SmartHomeControllerTest {
 		// - Con detección de movimiento
 		// - Siendo Evening
 		// - para que se encienda la bombilla
-		TimeUtils timeUtils = mock(TimeUtils.class);
-		SwitcherInterface mockSwitcher = mock(BackyardSwitcher.class);
+		TimeUtils timeUtils = Mockito.mock(TimeUtils.class);
+		SwitcherInterface mockSwitcher = Mockito.mock(BackyardSwitcher.class);
 		LocalDateTime time1 = LocalDateTime.now().withHour(19).withMinute(10).withSecond(00);
 
 		SmartHomeController controller = new SmartHomeController(mockSwitcher);
@@ -128,6 +129,6 @@ class SmartHomeControllerTest {
 		controller.actuateLights(false, time2);
 
 		// Assert
-		verify(mockSwitcher).turnOff();
+		Mockito.verify(mockSwitcher).turnOff();
 	}
 }
