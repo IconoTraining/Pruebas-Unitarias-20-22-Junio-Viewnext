@@ -2,15 +2,15 @@ package ShoppingCart;
 import java.util.*;
 
 public class ShoppingCart {
-	private ArrayList items;
+	private ArrayList<Product> items;
 	
 	public ShoppingCart() {
-		items = new ArrayList();
+		items = new ArrayList<Product>();
 	}
 	
 	public double getBalance() {
 		double balance = 0.00;
-		for (Iterator i = items.iterator(); i.hasNext();){
+		for (Iterator<Product> i = items.iterator(); i.hasNext();){
 			Product item = (Product)i.next();
 			balance += item.getPrice();
 		}
