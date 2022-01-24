@@ -54,4 +54,84 @@ class TimeUtilsTest {
   		String output = myClass.getTimeOfDay(time);
   		assertEquals("Evening", output);
 	}
+	
+//	// Mismos tests si se refactoriza con patrón costura (sewer pattern)
+//	
+//	@Test
+//	void entreLas0yLas6DevuelveNight() {
+//		class TimeUtilsForTesting extends TimeUtils {
+//			protected LocalDateTime getTime() {
+//				return LocalDateTime.now().withHour(0);
+//			}
+//		}
+//
+//		TimeUtils myClass = new TimeUtilsForTesting();
+//  		String output = myClass.getTimeOfDay();
+//  		assertEquals("Night", output);
+//	}
+//
+//	@Test
+//	void ALas1DevuelveNight() {
+//		class TimeUtilsForTesting extends TimeUtils {
+//			protected LocalDateTime getTime() {
+//				return LocalDateTime.now().withHour(1);
+//			}
+//		}
+//
+//		TimeUtils myClass = new TimeUtilsForTesting();
+//  		String output = myClass.getTimeOfDay();
+//  		assertEquals("Night", output);
+//	}
+//
+//	@Test
+//	void ALas5DevuelveNight() {
+//		class TimeUtilsForTesting extends TimeUtils {
+//			protected LocalDateTime getTime() {
+//				return LocalDateTime.now().withHour(5);
+//			}
+//		}
+//
+//		TimeUtils myClass = new TimeUtilsForTesting();
+//  		String output = myClass.getTimeOfDay();
+//  		assertEquals("Night", output);
+//	}
+//
+//	@Test
+//	void entreLas6yLas12DevuelveMorning() {
+//		class TimeUtilsForTesting extends TimeUtils {
+//			protected LocalDateTime getTime() {
+//				return LocalDateTime.now().withHour(6);
+//			}
+//		}
+//
+//		TimeUtils myClass = new TimeUtilsForTesting();
+//  		String output = myClass.getTimeOfDay();
+//  		assertEquals("Morning", output);
+//	}
+//
+//	@Test
+//	void ALas12DevuelveAfternoon() {
+//		class TimeUtilsForTesting extends TimeUtils {
+//			protected LocalDateTime getTime() {
+//				return LocalDateTime.now().withHour(12);
+//			}
+//		}
+//
+//		TimeUtils myClass = new TimeUtilsForTesting();
+//  		String output = myClass.getTimeOfDay();
+//  		assertEquals("Afternoon", output);
+//	}
+//	
+//	@Test
+//	void ALas18DevuelveEvening() {
+//		class TimeUtilsForTesting extends TimeUtils {
+//			protected LocalDateTime getTime() {
+//				return LocalDateTime.now().withHour(18);
+//			}
+//		}
+//
+//		TimeUtils myClass = new TimeUtilsForTesting();
+//  		String output = myClass.getTimeOfDay();
+//  		assertEquals("Evening", output);
+//	}
 }
